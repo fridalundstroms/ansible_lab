@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fridas testwebb</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=-10">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        
+        .image-container {
+    	text-align: center; /* Centrera innehållet horisontellt */
+    	margin-top: -36px; /* Lägg till ett mellanrum ovanför bilden */
+		margin-bottom: 10px;
+		}
+
+		.image-container img {
+    	width: 25%; /* Ange den önskade bredden för bilden (t.ex. 100% av förälderens bredd) */
+    	height: auto; /* Behåll bildens aspektratio */
+		}
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+			background-color: #dce5f0; /* Lägg till denna rad för att ändra bakgrundsfärgen till blå */
+        }
+
+		#senaste-ändring {
+            font-size: 11px; /* Adjust the font size as needed */
+            color: #555; /* Optionally, change the text color */
+			margin-top: -10px; /* Justera toppmarginalen för att flytta upp texten */
+        }
+        
+        #current-date {
+    text-align: right; /* Justera texten till vänster */
+    padding: 0px;
+    font-size: 10px; /* Ändra storleken om det behövs */
+    color: black;
+	font-weight: none;
+
+}
+        
+
+        /* Style the header */
+        header {
+            background-color: #c0d5f0;
+            border-radius: 10px 100px;
+            
+            text-align: center;
+            padding: 10px;
+            text-align: center;
+            font-size: 35px;
+            color: white;
+			margin-bottom: 20px; /* Lägg till detta för att skapa ett mellanrum nedanför header */
+			margin-top: 20px; /* Justera detta värde efter dina önskemål */
+        }
+
+        /* Create two columns/boxes that float next to each other */
+        nav {
+            float: right;
+            width: 30%;
+            max-height: 500px; /* Ange den maximala höjden du vill ha för menyn */
+    		overflow: auto; /* Lägg till en scrollbar om innehållet blir för stort */
+            background: #dce5f0;
+            padding: 20px;
+			border-radius: 10px 100px;
+			margin-bottom: 30px;
+			
+			
+        }
+
+        /* Style the list inside the menu */
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* Style the links inside the list */
+        nav ul li a {
+            background-color: #c0d5f0;
+            color: black;
+            padding: 14px 25px;
+            text-align: center;
+            display: flex;
+            justify-content: center; /* Centrera horisontellt */
+            align-items: center; /* Centrera vertikalt */
+            width: 360px; /* Ange önskad bredd */
+            height: 60px; /* Ange önskad höjd */
+            line-height: 20px; /* Centrera texten vertikalt */
+            border-radius: 30px;
+            font-size: 12px;
+        }
+
+        a:hover, a:active {
+            background-color: white;
+        }
+
+        article {
+            float: left;
+            padding: 20px;
+            width: 70%;
+            background-color: #f0f0f0;
+            height: 1500px; /* only for demonstration, should be removed */
+			border-radius: 10px 100px;
+        }
+
+        /* Clear floats after the columns */
+        section::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Style the footer */
+        footer {
+            background-color: #c0d5f0;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+        @media (max-width: 600px) {
+            nav, article {
+                width: 100%;
+                height: auto;
+            }
+            
+        }
+    </style>
+    <script>
+        function updateLastModified() {
+            const h1 = document.getElementById('automatisering-rubrik');
+            const lastModified = new Date(document.lastModified);
+            const paragraph = document.createElement('p');
+			paragraph.id = 'senaste-ändring'; // Lägg till id
+            paragraph.innerText = 'Last Modified: ' + lastModified.toLocaleString();
+            h1.parentNode.insertBefore(paragraph, h1.nextSibling);
+
+			
+        }
+
+	document.addEventListener("DOMContentLoaded", function() {
+    const currentDateElement = document.getElementById("current-date");
+    const currentDate = new Date();
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = currentDate.toLocaleDateString('en-US', options);
+    currentDateElement.textContent = "Current Date: " + formattedDate;
+});
+    </script>
+
+	
+</head>
+<body>
+	<p id="current-date"></p> <!-- Här kommer dagens datum att visas -->
+    <header>
+        <h2>FRIDA LUNDSTRÖM - DEVOPS22</h2>
+		   
+    </header>
+    <section>
+        <nav>
+            <ul>
+            
+          	<div class="image-container">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Ansible_logo.svg/1664px-Ansible_logo.svg.png" alt="Ansible Logo">
+</div>
+                <li><a href="#automatisering-rubrik">Automatisering med Configuration Management</a></li>
+                <br/>
+                <!-- Dina övriga länkar här -->
+                <li><a href="#ansible">What is Ansible?</a></li>
+                <br/>
+                <li><a href="https://studentportal.nackademin.se/course/view.php?id=74&sectionid=583#coursecontentcollapse14">Link to exam tasks</a></li>
+                <br/>
+                <li><a href="https://studentportal.nackademin.se/pluginfile.php/10499/mod_resource/content/4/Automatisering%20med%20Configuration%20Management%20program%2C%2015%20YH-po%C3%A4ng.pdf">Link to syllabus</a></li>
+                <br/>
+                <li><a href="https://github.com/ansible-collections/amazon.aws/blob/main/plugins/modules/ec2_instance.py">Ansible module AWS code example</a></li>
+                <br/>
+                <li><a href="https://docs.ansible.com/ansible/latest/collections/amazon/aws/ec2_instance_module.html#return-values">Ansible module AWS documentation</a></li>
+                <br/>
+                <li><a href="https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html">Ansible Docs - Intro to Playbooks</a></li>
+            </ul>
+        </nav>
+        <article>
+            <h1 id="automatisering-rubrik">Automatisering med Configuration Management</h1>
+            <p>For this course, the only examining part will be practical work in form of practical tasks.
+
+The tasks will be aimed both at the students aiming for Godkänt level. But there is room to showcase the Väl Godkänt level.
+
+The labs will take place in virtual machines created with Vagrant. In addition to these, there are tutorials that go through the goal of the exercise and which grade criterion it aims to fulfill. As well as what steps you have to perform to reach the various grading criteria.
+
+You can use each other for help while working with the tasks. But all student need to report their tasks individually to the examiner.
+
+After each part, report to be approved for that part of the work. The parts are called "Part 1" and so on.</p>
+            <p>Setting up the vagrant environment is basic and is not part of graded work.
+
+There will be 12 parts relating to Godkänt, and 1 part relating to Väl Godkänt. Only the Godkänt parts are mandatory to get the grade Godkänt on this course.</p>
+            <h1 id="ansible"> What is Ansible?</h1>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/1id6ERvfozo" frameborder="0" allowfullscreen></iframe>
+        </article>
+    </section>
+    <footer>
+        <p>/Frida</p>
+    </footer>
+    <script>
+        updateLastModified();
+    </script>
+</body>
+<script src="script.js"></script> <!-- Länka till JavaScript-filen -->
+</html>

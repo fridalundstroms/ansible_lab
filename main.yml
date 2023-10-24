@@ -1,0 +1,12 @@
+---
+- name: Configure web
+  hosts: webb
+  tasks:
+    - include_role:
+        name: webbserver
+
+- name: Configure db
+  hosts: databas
+  tasks:
+    - include_role:
+        name: dbserver

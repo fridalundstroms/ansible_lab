@@ -1,0 +1,35 @@
+---
+  vars_files:
+    - vault_secrets.yml
+  tasks:
+    - name: Make sure the latest version of the MariaDB package is installed.
+      yum:
+        name: mariadb-server
+        state: latest
+    - name: Start MariaDB at boot.
+      service:
+        name: mariadb
+        enabled: yes
+        state: started
+    - name: Install MySQL-python package
+      yum:
+        name: MySQL-python
+        state: present
+    - name: Create the webappdb database
+      mysql_db:
+        name: webappdb
+        state: present
+    - name: Create the webappuser database user
+      mysql_user:
+        name: webappuser
+        password: "{{ db_user_password }}"
+        priv: "webappdb.*:ALL"
+    - name: Create Directory (files) for textfil 1,2,3.
+      file:
+        path: /home/deploy/files
+        state: directory
+    - name: Copy files to databas -textfil 1,2,3 till Directory files.
+      copy:
+        src: "{{ item }}"
+        dest: /home/deploy/files
+      with_fileglob: "*.txt"
