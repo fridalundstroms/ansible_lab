@@ -1,9 +1,4 @@
 ---
-- name:  Playbook for database.
-  hosts: databas  
-  vars_files:
-    - vault_secrets.yml
-  tasks:
     - name: Make sure the latest version of the MariaDB package is installed.
       yum:
         name: mariadb-server
@@ -17,7 +12,7 @@
       yum:
         name: MySQL-python
         state: present
-    - name: Create the webappdb database.
+    - name: Create the webappdb database
       mysql_db:
         name: webappdb
         state: present
@@ -30,7 +25,7 @@
       file:
         path: /home/deploy/files
         state: directory
-    - name: Copy files to database - textfil 1,2,3 till Directory - files.
+    - name: Copy files to database - textfil 1,2,3 till Directory -  files.
       copy:
         src: "{{ item }}"
         dest: /home/deploy/files

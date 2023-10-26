@@ -1,5 +1,7 @@
 ---
 - hosts: webb
+  vars: 
+    apache_ip: "172.28.128.219"
   tasks:
     - name: Make sure the latest version of the Apache package is installed.
       package:
@@ -13,21 +15,21 @@
         enabled: yes
         state: started
 
-    - name: Create website directory
+    - name: Create website directory.
       file:
         path: /var/www/example.org
         state: directory
         owner: apache
         group: apache
 
-    - name: Copy index.html to the website directory
+    - name: Copy index.html to the website directory. From filer/index.html --> /var/www/example.org/index.html
       copy:
         src: filer/index.html
         dest: /var/www/example.org/index.html
 
     - name: Define a vhost.
-      copy:
-        src: "filer/my_vhost.conf"
+      template:
+        src: "my_vhost.conf.j2"
         dest: "/etc/httpd/conf.d/my_vhost.conf"
       notify: restart apache
 
