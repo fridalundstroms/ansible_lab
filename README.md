@@ -1,3 +1,6 @@
+![Uploading image.png…]()
+
+
 # Examination
 Part 1 - Configure Ansible (G)
 
@@ -24,3 +27,5 @@ Part 11 - Roles (G)
 Part 12 - Handlers (G)
 
 Part 13 - Väl Godkänt task
+
+
