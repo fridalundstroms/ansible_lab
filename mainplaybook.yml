@@ -1,0 +1,8 @@
+---
+- hosts: webb
+  roles:
+    - webbserver
+
+- hosts: databas
+  roles:
+    - dbserver

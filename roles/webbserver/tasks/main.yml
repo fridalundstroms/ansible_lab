@@ -1,0 +1,38 @@
+---
+  - name: Make sure the latest version of the Apache package is installed.
+    package:
+      name: httpd
+      state: latest
+    notify: restart apache
+
+  - name: Start Apache at boot.
+    service:
+      name: httpd
+      enabled: yes
+      state: started
+
+  - name: Create website directory.
+    file:
+      path: /var/www/example.org
+      state: directory
+      owner: apache
+      group: apache
+
+  - name: Copy index.html to the website directory. From filer/index.html --> /var/www/example.org/index.html.
+    copy:
+      src: filer/index.html
+      dest: /var/www/example.org/index.html
+
+  - name: Define a vhost.
+    template:
+      src: "my_vhost.conf.j2"
+      dest: "/etc/httpd/conf.d/my_vhost.conf"
+    notify: restart apache
+
+  - name: Create 3 users.
+    user:
+      name: "{{ item }}"
+    loop:
+      - bert
+      - earnie
+      - cookie-monster
