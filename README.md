@@ -1,3 +1,6 @@
+# Example.org
+<img src="https://github.com/fridalundstroms/ansiblelab/blob/main/Sk%C3%A4rmbild%202023-10-26%20192957.png?raw=true" alt="Alt Text" width="600" height="400">
+
 # Examination
 Part 1 - Configure Ansible (G)
 
@@ -24,6 +27,3 @@ Part 11 - Roles (G)
 Part 12 - Handlers (G)
 
 Part 13 - Väl Godkänt task
-
-# Example.org
-<img src="https://github.com/fridalundstroms/ansiblelab/blob/main/Sk%C3%A4rmbild%202023-10-26%20192957.png?raw=true" alt="Alt Text" width="600" height="400">
